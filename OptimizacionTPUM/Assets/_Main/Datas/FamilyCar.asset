@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd70523fcddc35648a9dc92691dededd, type: 3}
   m_Name: FamilyCar
   m_EditorClassIdentifier: 
-  <MaxSpeed>k__BackingField: 500
-  <Acceleration>k__BackingField: 20
-  <BreakForce>k__BackingField: 15
-  <EmergencyBreakForce>k__BackingField: 30
-  <TurnForce>k__BackingField: 6
-  <DriftForce>k__BackingField: 10
+  <MaxSpeed>k__BackingField: 1000
+  <Acceleration>k__BackingField: 30
+  <BreakForce>k__BackingField: 45
+  <EmergencyBreakForce>k__BackingField: 100
+  <TurnForce>k__BackingField: 10
