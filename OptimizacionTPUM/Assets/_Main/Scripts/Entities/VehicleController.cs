@@ -29,9 +29,9 @@ namespace _Main.Scripts.Entities
 
         private void OnAcceleratePerformed(InputAction.CallbackContext context)
         {
-            var inputValue = context.ReadValue<Vector2>();
-            //_vehicleModel.Movement(inputValue);
-            _vehicleModel.ChangeDir(inputValue);
+            var l_inputValue = context.ReadValue<Vector2>();
+            
+            _vehicleModel.ChangeDir(l_inputValue);
         }
 
 

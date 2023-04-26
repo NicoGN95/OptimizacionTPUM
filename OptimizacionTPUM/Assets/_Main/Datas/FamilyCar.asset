@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxSpeed>k__BackingField: 500
   <Acceleration>k__BackingField: 20
-  <BreakForce>k__BackingField: 300
-  <EmergencyBreakForce>k__BackingField: 20
+  <BreakForce>k__BackingField: 15
+  <EmergencyBreakForce>k__BackingField: 30
   <TurnForce>k__BackingField: 6
   <DriftForce>k__BackingField: 10

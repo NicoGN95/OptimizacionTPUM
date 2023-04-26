@@ -35,11 +35,11 @@ namespace _Main.Scripts.Managers
 
         private void UpdateSpeed(float speed)
         {
-            var value = Mathf.Clamp(speed * 3.6f, 0, 150);
-            speedText.text = "Speed: " + Mathf.Round(value)+ "km/h";
+            var l_value = speed * 3.6f;
+            speedText.text = "Speed: " + Mathf.Round(l_value)+ "km/h";
 
-            var angle = Quaternion.Euler(0, 0, -speed * 3.6f);
-            needel.transform.rotation = angle;
+            var l_angle = Quaternion.Euler(0, 0, -speed * 3.6f);
+            needel.transform.rotation = l_angle;
         }
 
         public void SubscribeUpdateManager()
