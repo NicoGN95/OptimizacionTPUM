@@ -10,20 +10,21 @@ namespace _Main.Scripts.Entities
     {
 
         [SerializeField] private PlayerInput input;
-        private VehicleModel _vehicleModel;
+        private VehicleModel m_vehicleModel;
 
-        private InputActionMap _vehicleInputActions;
+        private InputActionMap m_vehicleInputActions;
 
         private void Start()
         {
-            _vehicleModel = GetComponent<VehicleModel>();
+            m_vehicleModel = GetComponent<VehicleModel>();
             // Get the input actions
-            _vehicleInputActions = input.currentActionMap;
+            m_vehicleInputActions = input.currentActionMap;
 
             // Subscribe to the input actions using events
             
-            _vehicleInputActions["Movement"].performed += OnAcceleratePerformed;
-            _vehicleInputActions["EmergencyBrake"].performed += OnEmergencyBrakePerformed;
+            m_vehicleInputActions["Movement"].performed += OnAcceleratePerformed;
+            m_vehicleInputActions["Movement"].canceled += OnAccelerateCanceled;
+            m_vehicleInputActions["EmergencyBrake"].performed += OnEmergencyBrakePerformed;
         }
 
 
@@ -31,14 +32,18 @@ namespace _Main.Scripts.Entities
         {
             var l_inputValue = context.ReadValue<Vector2>();
             
-            _vehicleModel.ChangeDir(l_inputValue);
+            m_vehicleModel.ChangeDir(l_inputValue);
         }
 
-
+        private void OnAccelerateCanceled(InputAction.CallbackContext context)
+        {
+            
+            m_vehicleModel.ChangeDir(Vector2.zero);
+        }
 
         private void OnEmergencyBrakePerformed(InputAction.CallbackContext context)
         {
-            _vehicleModel.EmergencyBrake();
+            m_vehicleModel.EmergencyBrake();
         }
     }
 }
