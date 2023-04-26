@@ -1,4 +1,5 @@
 ﻿using System;
+using _Main.Scripts.CustomUpdate;
 using _Main.Scripts.Entities;
 using TMPro;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _Main.Scripts.Managers
 {
-    public class UiManager : MonoBehaviour
+    public class UiManager : MonoBehaviour, IUpdateObject
     {
         [SerializeField] private Text speedText;
         [SerializeField] private VehicleModel model;
@@ -19,10 +20,15 @@ namespace _Main.Scripts.Managers
         {
             if (Instance == null)
                 Instance = this;
-            
+
         }
 
-        private void Update()
+        private void Start()
+        {
+            SubscribeUpdateManager();
+        }
+
+        public void MyUpdate()
         {
             UpdateSpeed(model.CurrSpeed);
         }
@@ -35,5 +41,17 @@ namespace _Main.Scripts.Managers
             var angle = Quaternion.Euler(0, 0, -speed * 3.6f);
             needel.transform.rotation = angle;
         }
+
+        public void SubscribeUpdateManager()
+        {
+            UpdateManager.Instance.AddListenerUI(this);
+        }
+
+        public void UnSubscribeUpdateManager()
+        {
+            UpdateManager.Instance.RemoveListenerUI(this);
+        }
+
+        
     }
 }
